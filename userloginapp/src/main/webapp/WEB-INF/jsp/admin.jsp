@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="userForm" method="post" action="/login" modelAttribute="adminupdate">
-    User Name : <input type="text" name="userName"/> <br/>
-    Password : <input type="text" name="password"/> <br/> 
-    <input type="submit" value="Login" />
+<form name="userForm" method="post" action="/adminupdate" modelAttribute="adminupdate">
+    User Id : <input type="text" name="userId"/> <br/>
+    <input type="submit" value="delete">
 </form>
 </body>
 </html>

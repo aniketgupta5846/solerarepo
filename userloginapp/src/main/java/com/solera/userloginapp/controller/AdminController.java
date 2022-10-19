@@ -8,17 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.solera.userloginapp.entities.UserDetails;
-import com.solera.userloginapp.model.AdminModel;
-import com.solera.userloginapp.service.UserDetailsService;
-import com.solera.userloginapp.utility.UserDetailsUtility;
+import com.solera.userloginapp.model.AdminRoleModel;
+import com.solera.userloginapp.service.AdminService;
+import com.solera.userloginapp.utility.AdminUtility;
 
 @Controller
 public class AdminController {
 	@Autowired
-	private UserDetailsService userDetalisSevice;
+	private AdminService adminService;
 	@Autowired
-	private UserDetailsUtility userDetailsUtility;
+	private AdminUtility adminUtility;
 
 	@GetMapping("/admin")
 	public ModelAndView getUserDetailsForm() {
@@ -27,13 +26,20 @@ public class AdminController {
 		return mv;
 	}
 
+//	@RequestMapping(value = "/adminupdate", method = RequestMethod.POST)
+//	public ModelAndView updateUserDetails(@ModelAttribute("userlogin") AdminRoleModel adminRoleModel) {
+//		ModelAndView mv = new ModelAndView();
+//		UserDetails userDetails = adminService
+//				.updateUser(adminUtility.createUserRoleDetailsFromModel(adminRoleModel));
+//		mv.setViewName("registered");
+//		mv.addObject("registered", userDetails);
+//		return mv;
+//	}
+
+	// http://localhost:8080/admin
 	@RequestMapping(value = "/adminupdate", method = RequestMethod.POST)
-	public ModelAndView updateUserDetails(@ModelAttribute("userlogin") AdminModel adminModel) {
-		ModelAndView mv = new ModelAndView();
-		UserDetails userDetails = userDetalisSevice
-				.createUserProfile(userDetailsUtility.createUserDetailsFromModel(userDetailsModel));
-		mv.setViewName("registered");
-		mv.addObject("registered", userDetails);
-		return mv;
+	public String deleteUser(@ModelAttribute("userlogin") AdminRoleModel adminRoleModel) {
+		adminService.deleteUser(adminRoleModel.getUserId());
+		return "registered";
 	}
 }

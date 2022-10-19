@@ -28,6 +28,7 @@ public class RegisterController {
 		return mv;
 	}
 
+	// http://localhost:8080/register
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public ModelAndView addUserDetails(@ModelAttribute("userlogin") UserDetailsModel userDetailsModel) {
 		ModelAndView mv = new ModelAndView();
