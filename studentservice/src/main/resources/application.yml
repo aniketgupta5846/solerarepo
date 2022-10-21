@@ -1,0 +1,21 @@
+server:
+  port: 8763
+spring:
+  application:
+    name: studentservice
+  config:
+    import: "optional:configserver:http://localhost:8088"
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/aniketdb
+    username: postgres
+    password: Dealer22!ag
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL92Dialect
+
+
